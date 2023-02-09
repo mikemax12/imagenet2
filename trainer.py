@@ -134,16 +134,16 @@ model
  
 #unfreezing the model parameters
 
-#model.cuda()
+model.cuda()
 
-'''
+
 if torch.cuda.is_available():
-  device= torch.device('cuda')
+  device= torch.device('cuda:1')
   print("CUDA is avaialble")
 else:
   device= torch.device('cpu')
   print("Only CPU")
-'''
+
 
 """Using pre-trained models ...... To be continued!"""
 
@@ -160,7 +160,12 @@ def train_model(model, criteria, optimizer, scheduler,
     for epoch in range(1, num_epochs+1):
         print('Epoch {}/{}'.format(epoch, num_epochs ))
         print('-' * 10)
-
+        if torch.cuda.is_available():
+            device= torch.device('cuda:1')
+            print("CUDA is avaialble")
+        else:
+            device= torch.device('cpu')
+            print("Only CPU")
         # Each epoch has a training and validation phase
         for phase in ['train']:
             if phase == 'train':
@@ -173,9 +178,12 @@ def train_model(model, criteria, optimizer, scheduler,
             running_corrects = 0
             i = 0
             # Iterate over data.
+            print(i)
+            print(len(dataloaders[phase]))
             for inputs, labels in dataloaders[phase]:
-                inputs = inputs.to(device)
-                labels = labels.to(device)
+                i+=1
+                #inputs = inputs.to(device)
+                #labels = labels.to(device)
                 
                 # zero the parameter gradients
                 optimizer.zero_grad()
