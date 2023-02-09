@@ -1177,7 +1177,9 @@ def train_model(model, criteria, optimizer, scheduler,
             for inputs, labels in dataloaders[phase]:
                 #inputs = inputs.to(device)
                 #labels = labels.to(device)
-
+                labelz = labels.tolist()
+                if 719 in labelz:
+                    continue
                 # zero the parameter gradients
                 optimizer.zero_grad()
 
@@ -1189,6 +1191,7 @@ def train_model(model, criteria, optimizer, scheduler,
                     print("printing")
                     print(outputs)
                     print(labels)
+                    
                     loss = criteria(outputs, labels)
 
                     # backward + optimize only if in training phase
