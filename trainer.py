@@ -182,6 +182,10 @@ def train_model(model, criteria, optimizer, scheduler,
             print(len(dataloaders[phase]))
             for inputs, labels in dataloaders[phase]:
                 i+=1
+                if i % 1000 == 0:
+                    print(i)
+                if i < 10000:
+                    break
                 #inputs = inputs.to(device)
                 #labels = labels.to(device)
                 
