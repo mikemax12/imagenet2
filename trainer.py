@@ -167,6 +167,7 @@ def train_model(model, criteria, optimizer, scheduler,
             device= torch.device('cpu')
             print("Only CPU")
         # Each epoch has a training and validation phase
+        i = 0
         for phase in ['train']:
             if phase == 'train':
                 #scheduler.step()
@@ -176,16 +177,13 @@ def train_model(model, criteria, optimizer, scheduler,
 
             running_loss = 0.0
             running_corrects = 0
-            i = 0
+            
             # Iterate over data.
             print(i)
+            i+=1
             print(len(dataloaders[phase]))
             for inputs, labels in dataloaders[phase]:
-                i+=1
-                if i % 1000 == 0:
-                    print(i)
-                if i < 10000:
-                    break
+                
                 #inputs = inputs.to(device)
                 #labels = labels.to(device)
                 
