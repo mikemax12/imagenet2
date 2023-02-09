@@ -30,10 +30,10 @@ for file in files:
     paths.append(file)
     labels.append(label_str)
  
-from sklearn.model_selection import train_test_split
+#from sklearn.model_selection import train_test_split
  
-(trainPaths, testPaths, trainLabels, testLabels) = train_test_split(paths, labels, test_size=50000, stratify=labels, random_state=42)
-
+#(trainPaths, testPaths, trainLabels, testLabels) = train_test_split(paths, labels, test_size=50000, stratify=labels, random_state=42)
+'''
 TEST_DATA_FOLDER = "/local/scratch/c_adabouei/ILSVRC/Data/CLS-LOC/test/"
  
 for testPath, testLabel in zip(testPaths, testLabels):
@@ -78,7 +78,7 @@ for file in val_files:
             os.mkdir(VAL_DATA_PATH + class_name)
  
         os.rename(file, VAL_DATA_PATH + class_name + "/" + file.split("/")[-1])
-
+'''
 
 import json
 import glob
