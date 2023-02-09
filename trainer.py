@@ -134,7 +134,7 @@ model
  
 #unfreezing the model parameters
 
-model.cuda()
+#model.cuda()
 
 
 if torch.cuda.is_available():
