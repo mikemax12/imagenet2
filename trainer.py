@@ -1125,7 +1125,7 @@ class_names = {0: 'tench, Tinca tinca',
 model = models.resnet18(pretrained=True)
 model
 
-model.fc = nn.Linear(512, 900)
+model.fc = nn.Linear(512, 999)
 model
 
 """Setting up the directories to read the data"""
