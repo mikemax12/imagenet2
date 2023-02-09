@@ -1125,7 +1125,7 @@ class_names = {0: 'tench, Tinca tinca',
 model = models.resnet18(pretrained=True)
 model
 
-model.fc = nn.Linear(512, 999)
+model.fc = nn.Linear(512, 1000)
 model
 
 """Setting up the directories to read the data"""
@@ -1165,7 +1165,7 @@ def train_model(model, criteria, optimizer, scheduler,
         # Each epoch has a training and validation phase
         for phase in ['train']:
             if phase == 'train':
-                scheduler.step()
+                #scheduler.step()
                 model.train()  # Set model to training mode
             else:
                 model.eval()   # Set model to evaluate mode
@@ -1194,10 +1194,11 @@ def train_model(model, criteria, optimizer, scheduler,
                     if phase == 'train':
                         loss.backward()
                         optimizer.step()
-
+                        
                 # statistics
                 running_loss += loss.item() * inputs.size(0)
                 running_corrects += torch.sum(preds == labels.data)
+                
 
             epoch_loss = running_loss / dataset_sizes[phase]
             epoch_acc = running_corrects.double() / dataset_sizes[phase]
@@ -1211,6 +1212,7 @@ def train_model(model, criteria, optimizer, scheduler,
                 best_model_wts = copy.deepcopy(model.state_dict())
 
         print()
+        scheduler.step()
 
     time_elapsed = time.time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(
