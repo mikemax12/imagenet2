@@ -188,6 +188,7 @@ def train_model(model, criteria, optimizer, scheduler,
                 #labels = labels.to(device)
                 if i > 200:
                     break
+                print(i)
                 # zero the parameter gradients
                 optimizer.zero_grad()
 
