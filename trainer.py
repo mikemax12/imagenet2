@@ -1125,7 +1125,7 @@ class_names = {0: 'tench, Tinca tinca',
 model = models.resnet18(pretrained=True)
 model
 
-model.fc = nn.Linear(512, 102)
+model.fc = nn.Linear(512, 900)
 model
 
 """Setting up the directories to read the data"""
@@ -1157,7 +1157,7 @@ def train_model(model, criteria, optimizer, scheduler,
 
     best_model_wts = copy.deepcopy(model.state_dict())
     best_acc = 0.0
-
+    
     for epoch in range(1, num_epochs+1):
         print('Epoch {}/{}'.format(epoch, num_epochs ))
         print('-' * 10)
@@ -1172,14 +1172,12 @@ def train_model(model, criteria, optimizer, scheduler,
 
             running_loss = 0.0
             running_corrects = 0
-
+            i = 0
             # Iterate over data.
             for inputs, labels in dataloaders[phase]:
                 #inputs = inputs.to(device)
                 #labels = labels.to(device)
-                labelz = labels.tolist()
-                if 719 in labelz:
-                    continue
+                
                 # zero the parameter gradients
                 optimizer.zero_grad()
 
