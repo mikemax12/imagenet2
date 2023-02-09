@@ -180,13 +180,13 @@ def train_model(model, criteria, optimizer, scheduler,
             
             # Iterate over data.
             print(i)
-            i+=1
+            
             print(len(dataloaders[phase]))
             for inputs, labels in dataloaders[phase]:
-                
+                i+=1
                 #inputs = inputs.to(device)
                 #labels = labels.to(device)
-                if i < 20000:
+                if i > 200:
                     break
                 # zero the parameter gradients
                 optimizer.zero_grad()
