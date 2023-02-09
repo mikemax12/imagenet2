@@ -186,7 +186,7 @@ def train_model(model, criteria, optimizer, scheduler,
                 i+=1
                 #inputs = inputs.to(device)
                 #labels = labels.to(device)
-                if i > 40:
+                if i > 70:
                     break
                 print(i)
                 # zero the parameter gradients
@@ -198,7 +198,9 @@ def train_model(model, criteria, optimizer, scheduler,
                     outputs = model(inputs)
                     _, preds = torch.max(outputs, 1)
                     
-                    
+                    print(outputs)
+                    print(labels)
+
                     loss = criteria(outputs, labels)
 
                     # backward + optimize only if in training phase
