@@ -212,15 +212,15 @@ def train_model(model, criteria, optimizer, scheduler,
                 
 
             epoch_loss = running_loss / dataset_sizes[phase]
-            epoch_acc = running_corrects.double() / dataset_sizes[phase]
+            #epoch_acc = running_corrects.double() / dataset_sizes[phase]
 
             print('{} Loss: {:.4f} Acc: {:.4f}'.format(
-                phase, epoch_loss, epoch_acc))
+                phase, epoch_loss, )) #epoch_acc))
 
             # deep copy the model
-            if phase == 'valid' and epoch_acc > best_acc:
-                best_acc = epoch_acc
-                best_model_wts = copy.deepcopy(model.state_dict())
+            #if phase == 'valid' and epoch_acc > best_acc:
+                #best_acc = epoch_acc
+                #best_model_wts = copy.deepcopy(model.state_dict())
 
         print()
         scheduler.step()
