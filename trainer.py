@@ -46,7 +46,7 @@ print ("done importing")
 
 """Removing flower_data.tar.gz because we now have the unzipped data"""
 
-train_dir = os.path.join(args.filename, 'train/ice_cream')
+train_dir = os.path.join(args.filename, 'train')
 valid_dir = os.path.join(args.filename, 'val')
 test_dir= os.path.join(args.filename, 'test')
 
