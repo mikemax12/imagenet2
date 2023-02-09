@@ -1186,6 +1186,9 @@ def train_model(model, criteria, optimizer, scheduler,
                 with torch.set_grad_enabled(phase == 'train'):
                     outputs = model(inputs)
                     _, preds = torch.max(outputs, 1)
+                    print("printing")
+                    print(outputs)
+                    print(labels)
                     loss = criteria(outputs, labels)
 
                     # backward + optimize only if in training phase
